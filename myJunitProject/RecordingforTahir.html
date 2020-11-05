@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>ExtentReports</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Sep 25, 2020 04:41:16 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='25.926%'><span class='strong'>21</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='74.074%'>60</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Load All the products until pagination finishes</span>
+						<span class='test-time'>Sep 25, 2020 04:41:16 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 25, 2020 04:41:16 PM</span>
+	<span class='label end-time'>Sep 25, 2020 04:42:04 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 47s+735ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:42:04 PM</td>
+					<td class='step-details'>All products are loaded<img data-featherlight='/Users/kirpal/screen/PEnation-0-time- 1601016124282.png' width='10%' src='/Users/kirpal/screen/PEnation-0-time- 1601016124282.png' data-src='/Users/kirpal/screen/PEnation-0-time- 1601016124282.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Add each of the products to the cart</span>
+						<span class='test-time'>Sep 25, 2020 04:42:05 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Sep 25, 2020 04:42:05 PM</span>
+	<span class='label end-time'>Sep 25, 2020 04:46:38 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 4m 33s+13ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:07 PM</td>
+					<td class='step-details'>Adding product No: 1to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:14 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 1</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:22 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:42:22 PM</td>
+					<td class='step-details'>Product No: 1 https://pe-nation.com/elevation-sports-bra/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-1-time- 1601016140744.png' width='10%' src='/Users/kirpal/screen/PEnation-1-time- 1601016140744.png' data-src='/Users/kirpal/screen/PEnation-1-time- 1601016140744.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:22 PM</td>
+					<td class='step-details'>Adding product No: 2to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:28 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 2</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:36 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:42:36 PM</td>
+					<td class='step-details'>Product No: 2 https://pe-nation.com/elevation-legging/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-2-time- 1601016154122.png' width='10%' src='/Users/kirpal/screen/PEnation-2-time- 1601016154122.png' data-src='/Users/kirpal/screen/PEnation-2-time- 1601016154122.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:36 PM</td>
+					<td class='step-details'>Adding product No: 3to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:42 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 3</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:48 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:42:48 PM</td>
+					<td class='step-details'>Product No: 3 https://pe-nation.com/collision-hoodie/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-3-time- 1601016166973.png' width='10%' src='/Users/kirpal/screen/PEnation-3-time- 1601016166973.png' data-src='/Users/kirpal/screen/PEnation-3-time- 1601016166973.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:49 PM</td>
+					<td class='step-details'>Adding product No: 4to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:42:55 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 4</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:03 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:43:03 PM</td>
+					<td class='step-details'>Product No: 4 https://pe-nation.com/tie-break-jacket/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-4-time- 1601016181069.png' width='10%' src='/Users/kirpal/screen/PEnation-4-time- 1601016181069.png' data-src='/Users/kirpal/screen/PEnation-4-time- 1601016181069.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:03 PM</td>
+					<td class='step-details'>Adding product No: 5to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:09 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 5</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:16 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:43:16 PM</td>
+					<td class='step-details'>Product No: 5 https://pe-nation.com/heads-up-cropped-sweat-in-black/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-5-time- 1601016194410.png' width='10%' src='/Users/kirpal/screen/PEnation-5-time- 1601016194410.png' data-src='/Users/kirpal/screen/PEnation-5-time- 1601016194410.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:16 PM</td>
+					<td class='step-details'>Adding product No: 6to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:22 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 6</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:29 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:43:29 PM</td>
+					<td class='step-details'>Product No: 6 https://pe-nation.com/strike-short-in-black/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-6-time- 1601016207175.png' width='10%' src='/Users/kirpal/screen/PEnation-6-time- 1601016207175.png' data-src='/Users/kirpal/screen/PEnation-6-time- 1601016207175.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:29 PM</td>
+					<td class='step-details'>Adding product No: 7to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:35 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 7</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:42 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:43:42 PM</td>
+					<td class='step-details'>Product No: 7 https://pe-nation.com/heads-up-cropped-sweat-in-white/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-7-time- 1601016220683.png' width='10%' src='/Users/kirpal/screen/PEnation-7-time- 1601016220683.png' data-src='/Users/kirpal/screen/PEnation-7-time- 1601016220683.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:42 PM</td>
+					<td class='step-details'>Adding product No: 8to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:48 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 8</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:55 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:43:55 PM</td>
+					<td class='step-details'>Product No: 8 https://pe-nation.com/outfield-sports-bra/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-8-time- 1601016233812.png' width='10%' src='/Users/kirpal/screen/PEnation-8-time- 1601016233812.png' data-src='/Users/kirpal/screen/PEnation-8-time- 1601016233812.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:43:55 PM</td>
+					<td class='step-details'>Adding product No: 9to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:01 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 9</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:08 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:44:08 PM</td>
+					<td class='step-details'>Product No: 9 https://pe-nation.com/fast-break-legging/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-9-time- 1601016246509.png' width='10%' src='/Users/kirpal/screen/PEnation-9-time- 1601016246509.png' data-src='/Users/kirpal/screen/PEnation-9-time- 1601016246509.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:08 PM</td>
+					<td class='step-details'>Adding product No: 10to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:16 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 10</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:23 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:44:23 PM</td>
+					<td class='step-details'>Product No: 10 https://pe-nation.com/man-down-jacket-in-lilac-and-cherry-red/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-10-time- 1601016261638.png' width='10%' src='/Users/kirpal/screen/PEnation-10-time- 1601016261638.png' data-src='/Users/kirpal/screen/PEnation-10-time- 1601016261638.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:23 PM</td>
+					<td class='step-details'>Adding product No: 11to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:29 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 11</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:37 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:44:37 PM</td>
+					<td class='step-details'>Product No: 11 https://pe-nation.com/outfield-legging-in-lilac/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-11-time- 1601016275021.png' width='10%' src='/Users/kirpal/screen/PEnation-11-time- 1601016275021.png' data-src='/Users/kirpal/screen/PEnation-11-time- 1601016275021.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:37 PM</td>
+					<td class='step-details'>Adding product No: 12to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:43 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 12</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:50 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:44:50 PM</td>
+					<td class='step-details'>Product No: 12 https://pe-nation.com/outfield-short/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-12-time- 1601016288056.png' width='10%' src='/Users/kirpal/screen/PEnation-12-time- 1601016288056.png' data-src='/Users/kirpal/screen/PEnation-12-time- 1601016288056.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:50 PM</td>
+					<td class='step-details'>Adding product No: 13to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:44:58 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 13</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:04 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:45:04 PM</td>
+					<td class='step-details'>Product No: 13 https://pe-nation.com/man-down-reversible-jacket-in-maple/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-13-time- 1601016302849.png' width='10%' src='/Users/kirpal/screen/PEnation-13-time- 1601016302849.png' data-src='/Users/kirpal/screen/PEnation-13-time- 1601016302849.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:04 PM</td>
+					<td class='step-details'>Adding product No: 14to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:10 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 14</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:17 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:45:17 PM</td>
+					<td class='step-details'>Product No: 14 https://pe-nation.com/final-leap-sports-bra/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-14-time- 1601016315653.png' width='10%' src='/Users/kirpal/screen/PEnation-14-time- 1601016315653.png' data-src='/Users/kirpal/screen/PEnation-14-time- 1601016315653.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:17 PM</td>
+					<td class='step-details'>Adding product No: 15to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:23 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 15</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:30 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:45:30 PM</td>
+					<td class='step-details'>Product No: 15 https://pe-nation.com/final-leap-legging/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-15-time- 1601016328622.png' width='10%' src='/Users/kirpal/screen/PEnation-15-time- 1601016328622.png' data-src='/Users/kirpal/screen/PEnation-15-time- 1601016328622.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:30 PM</td>
+					<td class='step-details'>Adding product No: 16to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:37 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 16</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:43 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:45:43 PM</td>
+					<td class='step-details'>Product No: 16 https://pe-nation.com/box-out-tank-in-grey/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-16-time- 1601016341855.png' width='10%' src='/Users/kirpal/screen/PEnation-16-time- 1601016341855.png' data-src='/Users/kirpal/screen/PEnation-16-time- 1601016341855.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:43 PM</td>
+					<td class='step-details'>Adding product No: 17to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:50 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 17</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:57 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:45:57 PM</td>
+					<td class='step-details'>Product No: 17 https://pe-nation.com/collision-sports-bra/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-17-time- 1601016355669.png' width='10%' src='/Users/kirpal/screen/PEnation-17-time- 1601016355669.png' data-src='/Users/kirpal/screen/PEnation-17-time- 1601016355669.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:45:57 PM</td>
+					<td class='step-details'>Adding product No: 18to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:04 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 18</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:11 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:46:11 PM</td>
+					<td class='step-details'>Product No: 18 https://pe-nation.com/wired-tank-in-lilac/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-18-time- 1601016369740.png' width='10%' src='/Users/kirpal/screen/PEnation-18-time- 1601016369740.png' data-src='/Users/kirpal/screen/PEnation-18-time- 1601016369740.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:11 PM</td>
+					<td class='step-details'>Adding product No: 19to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:18 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 19</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:25 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:46:25 PM</td>
+					<td class='step-details'>Product No: 19 https://pe-nation.com/collision-legging/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-19-time- 1601016383328.png' width='10%' src='/Users/kirpal/screen/PEnation-19-time- 1601016383328.png' data-src='/Users/kirpal/screen/PEnation-19-time- 1601016383328.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:25 PM</td>
+					<td class='step-details'>Adding product No: 20to the cart</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:31 PM</td>
+					<td class='step-details'>Adding the first available size to the cart, product no: 20</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>4:46:38 PM</td>
+					<td class='step-details'>Navigated to the specified URL</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:46:38 PM</td>
+					<td class='step-details'>Product No: 20 https://pe-nation.com/block-action-short/ is Passed<img data-featherlight='/Users/kirpal/screen/PEnation-20-time- 1601016396394.png' width='10%' src='/Users/kirpal/screen/PEnation-20-time- 1601016396394.png' data-src='/Users/kirpal/screen/PEnation-20-time- 1601016396394.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>2</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>81</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Sep 25, 2020 04:41:16 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Sep 25, 2020 04:46:39 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 5m 23s+376ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>OS</td>
+								<td>Mac High Sierra</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 2,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 21,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 60,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
