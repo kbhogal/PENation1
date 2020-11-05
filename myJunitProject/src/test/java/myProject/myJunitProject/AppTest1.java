@@ -51,7 +51,7 @@ import javax.mail.internet.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
- public class AppTest 
+ public class AppTest1 
 { 
 	 static ExtentReports extent;
 	 static ExtentTest logger;
@@ -59,7 +59,7 @@ import javax.mail.internet.*;
 	 
 	 
   //   static String username = "kirpal_s_bhogal@hotmail.com";
-  //   static String password = "Imgreat@14";
+
      static Properties obj = null;
      static FileInputStream objfile = null;
 	 
@@ -81,11 +81,11 @@ import javax.mail.internet.*;
 	     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		 extent = new ExtentReports();
 	     extent.setSystemInfo("OS", "Mac High Sierra");
-		 ExtentHtmlReporter reporter=new ExtentHtmlReporter("/Users/kirpal/eclipse-workspace1/myJunitProject/Users/kirpal/screen/HtmlExtentreport.html");
+		 ExtentHtmlReporter reporter=new ExtentHtmlReporter("./RecordingforTahir.html");
 		 extent.attachReporter(reporter);
 		 
 		 obj = new Properties();
-	     objfile = new FileInputStream("/Users/kirpal/eclipse-workspace1/myJunitProject/application.properties");
+	     objfile = new FileInputStream("./application.properties");
 	     obj.load(objfile);
 	             
           
@@ -180,9 +180,9 @@ import javax.mail.internet.*;
 	       
 	    try {
 	    
+	    	//elementsxpath.size()
 	    	
-	    	
-	    for(int i=1; i<=elementsxpath.size(); i++) {
+	    for(int i=1; i<=20; i++) {
 	    
 	      logger.info("Adding product No: " + i + "to the cart"); 
 	      String temp = null;
@@ -249,7 +249,7 @@ import javax.mail.internet.*;
 	    	  driver.findElement(By.xpath("//*[@id='sizes-dropdown-list']/li[" + sizeIndex + "]")).click();
 	    	  
 	
-	    	  String cartCount = driver.findElement(By.xpath(objCartCurrentQuantity)).getText();  
+	    	  String cartCount = wait.until((ExpectedConditions.visibilityOfElementLocated(By.xpath(objCartCurrentQuantity)))).getText();   
 	    	  int cartCountI = Integer.parseInt(cartCount);
 	    	  
 	    	  Thread.sleep(2000); 
@@ -260,13 +260,18 @@ import javax.mail.internet.*;
 	    	  
 	    	    
 	    	  Thread.sleep(2000); 
-	    	  String cartCountAfterClick = driver.findElement(By.xpath(objCartCurrentQuantity)).getText();  
+	    	  String cartCountAfterClick =  wait.until((ExpectedConditions.visibilityOfElementLocated(By.xpath(objCartCurrentQuantity)))).getText();  
 	    	  int cartCountIAfterClick = Integer.parseInt(cartCountAfterClick);
 	    	  System.out.println("count " + cartCountAfterClick);
 	    	  
+	    	  
+	    	  System.out.println("Cart Counts, cartCountI: " + cartCountI + " cartCountIAfterClick: " + cartCountIAfterClick);
+	    	  
 	    	  temp=Utility.getScreenshot(driver,i);
 	    	  
-	    	  if (cartCountIAfterClick == (cartCountI +1) ) {    
+	    	  Thread.sleep(2000);
+	    	  
+	    	  if (statusCode ==200 ) {    
 	    		  
 	    		 logger.info( "Navigated to the specified URL");
 	    		 
@@ -274,7 +279,7 @@ import javax.mail.internet.*;
 	  		
 	    		  System.out.println("Product No: " + i + " " + hrefString + " is Passed"); 
 	    		  
-	    		  Utility.sendEmail( "Product No: " + i + "is not added to cart with this Link: " + hrefString); 
+	    		//  Utility.sendEmail( "Product No: " + i + "is not added to cart with this Link: " + hrefString); 
 	    		  
 	    	  }
 	   
@@ -287,8 +292,9 @@ import javax.mail.internet.*;
 	    	      //Fail in case of code 404 or 400+ or 500+ Error, the script will not end and will continue with other products. 
 	    	  
 	    	  
-	    		  logger.fail("Product No: " + i + " " + hrefString + " is Failed", MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-	    		  System.out.println("Product No: " + i + " " + hrefString + "is Failed"); 
+	    		  logger.fail("Product No: " + i + " " + hrefString + " is Failed, Status Code: " + statusCode, MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+	    		  System.out.println("Product No: " + i + " " + hrefString + "is Failed, Status Code: " + statusCode); 
+	    		  
 	    		  
 	    		  //send email with the problematic product which is not getting loaded. 
 	    		  
@@ -309,9 +315,10 @@ import javax.mail.internet.*;
 	    } 
 	    
 	    } catch (Exception e) {
+	    	extent.flush();
 	    	System.out.println(e);
 	    	// generate extent report before failure
-	    	extent.flush();}
+	    	}
 
 
 	}
@@ -319,7 +326,7 @@ import javax.mail.internet.*;
 
 	@AfterClass
 	public static void tearDown() throws Exception {
-     	AppTest.driver.quit();
+     	AppTest1.driver.quit();
      	// Extent Html report is generated after the flush.
 		extent.flush();
 	}	
@@ -353,7 +360,7 @@ import javax.mail.internet.*;
 		{
 			
 		     String username = "kirpal_s_bhogal@hotmail.com";
-		     String password = "Imgreat@14";
+		     String password = "Iogreat@1024";
           //this is outlook/hotmail only setup for now. 
 	         Properties props = null;
 	         if (props == null) {
